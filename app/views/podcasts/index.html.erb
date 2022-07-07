@@ -1,5 +1,8 @@
 <h1> Podcast List </h1>
 
+<div id="podcast_info_container">
 <% @podcasts.each do |podcast| %>
-<h3> <%= podcast.name %> </h3>
+<p class="podcast_name"> <%= podcast.name %> </p>
+<p class="podcast_created_at">Created at: <%= podcast.created_at %> </p>
 <% end %>
+</div>
