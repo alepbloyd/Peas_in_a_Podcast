@@ -19,12 +19,17 @@ ActiveRecord::Schema.define(version: 2022_07_06_204707) do
     t.string "title"
     t.integer "length_in_seconds"
     t.boolean "marked_explicit"
+    t.integer "podcast_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "podcasts", force: :cascade do |t|
     t.string "name"
     t.boolean "in_production"
     t.float "ad_slot_cost"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

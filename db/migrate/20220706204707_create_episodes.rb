@@ -4,6 +4,9 @@ class CreateEpisodes < ActiveRecord::Migration[5.2]
       t.string :title
       t.integer :length_in_seconds
       t.boolean :marked_explicit
+      t.integer :podcast_id
+
+      t.timestamps
     end
   end
 end
