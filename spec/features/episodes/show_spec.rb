@@ -8,7 +8,9 @@ RSpec.describe 'episode show', type: :feature do
 # Then I see the child with that id including the child's attributes:
 
   it 'shows the corresponding episode and attributes' do
-    episode_1 = Episode.create!(title: "Criminal: The first episode", length_in_seconds: 1000, marked_explicit: true, podcast_id: 1)
+    podcast_1 = Podcast.create!(name: "Criminal", in_production: true, ad_slot_cost: 950.25)
+
+    episode_1 = podcast_1.episodes.create!(title: "Criminal: The first episode", length_in_seconds: 1000, marked_explicit: true) 
 
     visit "/episodes/#{episode_1.id}"
 

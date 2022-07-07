@@ -8,9 +8,11 @@ RSpec.describe 'episode index', type: :feature do
 # Then I see each Child in the system including the Child's attributes:
 
   it 'displays index of podcast episodes with attributes' do
-    episode_1 = Episode.create!(title: "The first episode", length_in_seconds: 7000, marked_explicit: true)
-    episode_2 = Episode.create!(title: "The second episode", length_in_seconds: 543, marked_explicit: false)
-    episode_3 = Episode.create!(title: "The third episode", length_in_seconds: 25000, marked_explicit: true)
+    podcast_1 = Podcast.create!(name: "Criminal", in_production: true, ad_slot_cost: 950.25)
+
+    episode_1 = podcast_1.episodes.create!(title: "Criminal: The first episode", length_in_seconds: 1000, marked_explicit: true)
+    episode_2 = podcast_1.episodes.create!(title: "Criminal: The second episode", length_in_seconds: 123, marked_explicit: false)
+    episode_3 = podcast_1.episodes.create!(title: "Criminal: The third episode", length_in_seconds: 10000, marked_explicit: true)
 
     visit "/episodes"
 
