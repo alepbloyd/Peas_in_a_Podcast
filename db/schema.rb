@@ -19,16 +19,12 @@ ActiveRecord::Schema.define(version: 2022_07_06_204707) do
     t.string "title"
     t.integer "length_in_seconds"
     t.boolean "marked_explicit"
-
-    t.timestamps
   end
 
   create_table "podcasts", force: :cascade do |t|
     t.string "name"
     t.boolean "in_production"
     t.float "ad_slot_cost"
-
-    t.timestamps
   end
 
 end

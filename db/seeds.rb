@@ -8,3 +8,6 @@
 
 Podcast.create!(name: "Criminal", in_production: true, ad_slot_cost: 950.25)
 Podcast.create!(name: "Maintenance Phase", in_production: true, ad_slot_cost: 500)
+Podcast.create!(name: "The Daily", in_production: true, ad_slot_cost: 875.69)
+Podcast.create!(name: "This American Life", in_production: false, ad_slot_cost: 1400)
+Podcast.create!(name: "The Moth", in_production: false, ad_slot_cost: 450)
