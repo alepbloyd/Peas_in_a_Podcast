@@ -1,0 +1,6 @@
+<h1><%= @podcast.name%></h1>
+<% @episodes.each do |episode|%>
+<h2>Title: <%= episode.title%> </h2>
+<p>Length in Seconds: <%= episode.length_in_seconds%>
+<p>Explicit: <%= episode.marked_explicit%>
+<% end %>

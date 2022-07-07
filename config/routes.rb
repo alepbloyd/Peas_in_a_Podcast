@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   get '/episodes', to: 'episodes#index'
   get '/episodes/:id', to: 'episodes#show'
 
-  get '/podcasts/:id/episodes', to: 'podcasts#display'
+  get '/podcasts/:id/episodes', to: 'podcasts#episodes'
 end
