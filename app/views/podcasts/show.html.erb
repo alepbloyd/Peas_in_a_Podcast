@@ -1,3 +1,5 @@
 <h1> <%= @podcast.name %> </h1>
-<p> In Production: <%= @podcast.in_production %> </p>
-<p> Advertisement Cost: $<%= @podcast.ad_slot_cost%>
+<h2><%= link_to "Episodes", "/podcasts/#{@podcast.id}/episodes"%></h2>
+<h2>Number of Episodes: <%= @podcast.episodes.count%>
+<p>In Production: <%= @podcast.in_production %> </p>
+<p>Advertisement Cost: $<%= @podcast.ad_slot_cost%>

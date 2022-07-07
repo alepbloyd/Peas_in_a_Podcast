@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Episode.destroy_all
+Podcast.destroy_all
+
 podcast_1 = Podcast.create!(name: "Criminal", in_production: true, ad_slot_cost: 950.25)
 podcast_2 = Podcast.create!(name: "Maintenance Phase", in_production: true, ad_slot_cost: 500)
 podcast_3 = Podcast.create!(name: "The Daily", in_production: true, ad_slot_cost: 875.69)
