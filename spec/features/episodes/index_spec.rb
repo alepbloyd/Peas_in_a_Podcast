@@ -20,13 +20,26 @@ RSpec.describe 'episode index', type: :feature do
     expect(page).to have_content(episode_1.length_in_seconds)
     expect(page).to have_content(episode_1.marked_explicit)
 
-    expect(page).to have_content(episode_2.title)
-    expect(page).to have_content(episode_2.length_in_seconds)
-    expect(page).to have_content(episode_2.marked_explicit)
+    expect(page).to have_content(episode_3.title)
+    expect(page).to have_content(episode_3.length_in_seconds)
+    expect(page).to have_content(episode_3.marked_explicit)
+  end
 
-    expect(page).to have_content(episode_2.title)
-    expect(page).to have_content(episode_2.length_in_seconds)
-    expect(page).to have_content(episode_2.marked_explicit)
+  it 'only diplays episodes that are marked explicit' do
+
+    podcast_1 = Podcast.create!(name: "Criminal", in_production: true, ad_slot_cost: 950.25)
+
+    episode_1 = podcast_1.episodes.create!(title: "Criminal: The first episode", length_in_seconds: 1000, marked_explicit: true)
+    episode_2 = podcast_1.episodes.create!(title: "Criminal: The second episode", length_in_seconds: 123, marked_explicit: false)
+    episode_3 = podcast_1.episodes.create!(title: "Criminal: The third episode", length_in_seconds: 10000, marked_explicit: true)
+
+    visit '/episodes'
+
+    expect(page).to have_content(episode_1.title)
+
+    expect(page).to have_content(episode_3.title)
+
+    expect(page).not_to have_content(episode_2.title)
   end
 
 end
