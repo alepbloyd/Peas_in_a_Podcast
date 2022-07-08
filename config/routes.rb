@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   post '/podcasts', to: 'podcasts#create'
   get '/podcasts/:id', to: 'podcasts#show'
 
+  get '/podcasts/:id/episodes/new', to: 'episodes#new'
+  post '/episodes', to: 'episodes#create'
+
   get '/podcasts/:id/edit', to: 'podcasts#edit'
   patch '/podcasts/:id/', to: 'podcasts#update'
   
