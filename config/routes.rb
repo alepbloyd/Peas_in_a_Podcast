@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   
   get '/episodes', to: 'episodes#index'
   get '/episodes/:id', to: 'episodes#show'
+  get '/episodes/:id/edit', to: 'episodes#edit'
+  patch '/episodes/:id', to: 'episodes#update'
 
   get '/podcasts/:id/episodes', to: 'podcasts#episodes'
 end

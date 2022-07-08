@@ -11,6 +11,16 @@ class EpisodesController < ApplicationController
     @podcast = Podcast.find(params[:id])
   end
 
+  def edit
+    @episode = Episode.find(params[:id])
+  end
+
+  def update
+    episode = Episode.find(params[:id])
+    episode.update(episode_params)
+    redirect_to "/episodes/#{params[:id]}"
+  end
+
   def create
     @episode = Episode.create(episode_params)
 
