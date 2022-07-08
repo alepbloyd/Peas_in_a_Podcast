@@ -1,0 +1,8 @@
+<h1> Podcast List </h1>
+
+<% @podcasts.each_with_index do |podcast, index| %>
+<div id="podcast-<%= index%>">
+<p><b> <%= podcast.name %></b></p>
+<p>Created at: <%= podcast.created_at %></p>
+</div>
+<% end %>

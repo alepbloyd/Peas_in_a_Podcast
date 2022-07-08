@@ -1,0 +1,5 @@
+<% @episodes.each do |episode| %>
+<h1><%= episode.title %> </h1>
+<p>Length in seconds: <%= episode.length_in_seconds%> </p>
+<p>Marked explicit: <%= episode.marked_explicit%> </p>
+<% end %>
