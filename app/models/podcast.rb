@@ -4,4 +4,8 @@ class Podcast < ApplicationRecord
   validates :in_production, inclusion: [true,false]
 
   has_many :episodes
+
+  def self.order_by_recently_created_first
+    order(created_at: :desc)
+  end
 end

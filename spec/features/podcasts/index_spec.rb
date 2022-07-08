@@ -34,11 +34,20 @@ RSpec.describe 'podcast index', type: :feature do
 
     visit "/podcasts"
 
-    within '#podcast_info_container' do
-      expect(page.all('.podcast_name')[0]).to have_content("This American Life")
-      expect(page.all('.podcast_name')[1]).to have_content("The Daily")
-      expect(page.all('.podcast_name')[2]).to have_content("Maintenance Phase")
-      expect(page.all('.podcast_name')[3]).to have_content("Criminal")
+    within '#podcast-0' do
+      expect(page).to have_content("This American Life")
+    end
+    
+    within '#podcast-1' do
+      expect(page).to have_content("The Daily")
+    end
+
+    within '#podcast-2' do
+      expect(page).to have_content("Maintenance Phase")
+    end
+
+    within '#podcast-3' do
+      expect(page).to have_content("Criminal")
     end
     
   end
