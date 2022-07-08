@@ -4,4 +4,8 @@ class Episode < ApplicationRecord
   validates :marked_explicit, inclusion: [true,false]
 
   belongs_to :podcast
+
+  def self.only_display_explicit
+    where(marked_explicit: true)
+  end
 end
