@@ -11,4 +11,27 @@ class PodcastsController < ApplicationController
     @podcast = Podcast.find(params[:id])
     @episodes = @podcast.episodes
   end
+
+  def new
+  end
+
+  def edit
+    @podcast = Podcast.find(params[:id])
+  end
+
+  def create
+    Podcast.create(podcast_params)
+    redirect_to '/podcasts'
+  end
+
+  def update
+    podcast = Podcast.find(params[:id])
+    podcast.update(podcast_params)
+    redirect_to "/podcasts/#{params[:id]}"
+  end
+
+  private
+  def podcast_params
+    params.permit(:name,:in_production,:ad_slot_cost)
+  end
 end
