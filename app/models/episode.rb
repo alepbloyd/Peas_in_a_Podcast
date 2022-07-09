@@ -8,4 +8,8 @@ class Episode < ApplicationRecord
   def self.only_display_explicit
     where(marked_explicit: true)
   end
+
+  def self.alphabetical
+    order(title: :asc)
+  end
 end

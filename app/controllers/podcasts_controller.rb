@@ -9,7 +9,11 @@ class PodcastsController < ApplicationController
 
   def episodes
     @podcast = Podcast.find(params[:id])
-    @episodes = @podcast.episodes
+    if params[:sort] == "alpha"
+      @episodes = @podcast.episodes.alphabetical
+    else
+      @episodes = @podcast.episodes
+    end
   end
 
   def new

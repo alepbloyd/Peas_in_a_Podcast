@@ -23,4 +23,32 @@ RSpec.describe 'podcasts/:id/episodes', type: :feature do
     expect(page).to have_content(episode_1.marked_explicit)
   end
 
+  it 'has link to display episodes in alphabetical order' do
+
+    podcast = Podcast.create!(name: "Criminal", in_production: true, ad_slot_cost: 950.25)
+
+    episode_1 = podcast.episodes.create!(title: "B - the B Episode", length_in_seconds: 1000, marked_explicit: true)
+    episode_2 = podcast.episodes.create!(title: "C - the C Episode", length_in_seconds: 123, marked_explicit: false)
+    episode_3 = podcast.episodes.create!(title: "A - the A Episode", length_in_seconds: 10000, marked_explicit: true)
+
+    visit "/podcasts/#{podcast.id}/episodes"
+
+    click_link "Sort alphabetically"
+
+    expect(current_path).to eq("/podcasts/#{podcast.id}/episodes")
+
+    within '#episode-1' do
+      expect(page).to have_content("A - the A Episode")
+    end
+
+    within '#episode-2' do
+      expect(page).to have_content("B - the B Episode")
+    end
+
+    within '#episode-3' do
+      expect(page).to have_content("C - the C Episode")
+    end
+
+  end
+
 end

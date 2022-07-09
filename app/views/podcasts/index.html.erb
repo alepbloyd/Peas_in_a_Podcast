@@ -1,8 +1,8 @@
 <h1> Podcast List </h1>
 <p><%= link_to "Create new podcast", "/podcasts/new"%></p>
 <% @podcasts.each_with_index do |podcast, index| %>
-<div id="podcast-<%= index%>">
-<p><b> <%= podcast.name %></b></p>
+<div id="podcast-<%=index+1%>">
+<p><b> <%= podcast.name %></b> <span id="edit-podcast-<%=podcast.id%>"><%= link_to "Edit", "/podcasts/#{podcast.id}/edit"%> </span></p>
 <p>Created at: <%= podcast.created_at %></p>
 </div>
 <% end %>

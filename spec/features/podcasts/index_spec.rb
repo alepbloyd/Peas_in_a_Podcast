@@ -34,22 +34,56 @@ RSpec.describe 'podcast index', type: :feature do
 
     visit "/podcasts"
 
-    within '#podcast-0' do
+    within '#podcast-1' do
       expect(page).to have_content("This American Life")
     end
     
-    within '#podcast-1' do
+    within '#podcast-2' do
       expect(page).to have_content("The Daily")
     end
 
-    within '#podcast-2' do
+    within '#podcast-3' do
       expect(page).to have_content("Maintenance Phase")
     end
 
-    within '#podcast-3' do
+    within '#podcast-4' do
       expect(page).to have_content("Criminal")
     end
+  end
+
+  it 'displays link next to each podcast title, linking to podcast edit page' do
+    podcast_1 = Podcast.create!(name: "Criminal", in_production: true, ad_slot_cost: 950.25)
+    podcast_2 = Podcast.create!(name: "Maintenance Phase", in_production: true, ad_slot_cost: 500)
+    podcast_3 = Podcast.create!(name: "The Daily", in_production: true, ad_slot_cost: 875.69)
+    podcast_4 = Podcast.create!(name: "This American Life", in_production: false, ad_slot_cost: 1400)
+
+    visit '/podcasts'
+
+    within '#podcast-1' do
+      click_link "Edit"
+      expect(current_path).to eq("/podcasts/#{podcast_4.id}/edit")
+    end
+
+    visit '/podcasts'
     
+    within '#podcast-2' do
+      click_link "Edit"
+      expect(current_path).to eq("/podcasts/#{podcast_3.id}/edit")
+    end
+    
+    visit '/podcasts'
+    
+    within '#podcast-3' do
+      click_link "Edit"
+      expect(current_path).to eq("/podcasts/#{podcast_2.id}/edit")
+    end
+    
+    visit '/podcasts'
+    
+    within '#podcast-4' do
+      click_link "Edit"
+      expect(current_path).to eq("/podcasts/#{podcast_1.id}/edit")
+    end
   end
 
 end
