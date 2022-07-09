@@ -1,5 +1,8 @@
-<% @episodes.each do |episode| %>
+<% @episodes.each_with_index do |episode,index| %>
+<div id="episode-<%=index+1%>">
 <h1><%= episode.title %> </h1>
+<p><%= link_to "Edit", "/episodes/#{episode.id}/edit"%></p>
 <p>Length in seconds: <%= episode.length_in_seconds%> </p>
 <p>Marked explicit: <%= episode.marked_explicit%> </p>
+</div>
 <% end %>

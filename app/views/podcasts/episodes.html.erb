@@ -2,7 +2,10 @@
 <p><%= link_to "Create Episode","/podcasts/#{@podcast.id}/episodes/new"%></p>
 <p><%= link_to "Sort alphabetically", "/podcasts/#{@podcast.id}/episodes?sort=alpha"%>
 <% @episodes.each_with_index do |episode,index|%>
-<h2 id="episode-<%=index+1%>">Title: <%= episode.title%> </h2>
+<div id="episode-<%=index+1%>">
+<h2>Title: <%= episode.title%> </h2>
+<p><%= link_to "Edit", "/episodes/#{episode.id}/edit"%> </p>
 <p>Length in Seconds: <%= episode.length_in_seconds%></p>
 <p>Explicit: <%= episode.marked_explicit%></p>
+</div>
 <% end %>

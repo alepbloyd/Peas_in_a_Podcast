@@ -42,4 +42,34 @@ RSpec.describe 'episode index', type: :feature do
     expect(page).not_to have_content(episode_2.title)
   end
 
+  it 'contains a link next to each episode name, linking to episode edit page' do
+    podcast_1 = Podcast.create!(name: "Criminal", in_production: true, ad_slot_cost: 950.25)
+
+    episode_1 = podcast_1.episodes.create!(title: "Criminal: The first episode", length_in_seconds: 1000, marked_explicit: true)
+    episode_2 = podcast_1.episodes.create!(title: "Criminal: The second episode", length_in_seconds: 123, marked_explicit: false)
+    episode_3 = podcast_1.episodes.create!(title: "Criminal: The third episode", length_in_seconds: 10000, marked_explicit: true)
+
+    visit '/episodes'
+
+    within '#episode-1' do
+      click_link "Edit"
+      expect(current_path).to eq("/episodes/#{episode_1.id}/edit")
+    end
+
+    visit '/episodes'
+
+    within '#episode-2' do
+      click_link "Edit"
+      expect(current_path).to eq("/episodes/#{episode_3.id}/edit")
+    end
+
+    visit "/podcasts/#{podcast_1.id}/episodes"
+
+    within '#episode-1' do
+      click_link "Edit"
+      expect(current_path).to eq("/episodes/#{episode_1.id}/edit")
+    end
+
+  end
+
 end
