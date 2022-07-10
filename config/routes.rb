@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   patch '/episodes/:id', to: 'episodes#update'
 
   get '/podcasts/:id/episodes', to: 'podcasts#episodes'
+
+  get '/podcasts/:id/delete', to: 'podcasts#delete'
 end

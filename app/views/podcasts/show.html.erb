@@ -4,3 +4,4 @@
 <p>In Production: <%= @podcast.in_production %> </p>
 <p>Advertisement Cost: $<%= @podcast.ad_slot_cost%>
 <p><%= link_to "Edit Podcast Info", "/podcasts/#{@podcast.id}/edit"%>
+<p><%= link_to "Delete Podcast", "/podcasts/#{@podcast.id}/delete"%></p>

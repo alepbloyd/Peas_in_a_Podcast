@@ -1,7 +1,13 @@
 <%= form_with url: "/podcasts", method: :post, local: true do |form| %>
+
   <h1><%= form.label "Create New Podcast" %></h1>
+
   <p>Name: <%= form.text_field :name%></p>
+
   <p id="in_production">Check if currently in production:<%= form.check_box :in_production, {},"true","false"%></p>
+
   <p>Advertisement Cost: <%= form.number_field :ad_slot_cost%></p>
+
   <p><%= form.submit "Submit"%></p>
+  
 <% end %>
