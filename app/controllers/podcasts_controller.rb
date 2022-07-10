@@ -34,6 +34,11 @@ class PodcastsController < ApplicationController
     redirect_to "/podcasts/#{params[:id]}"
   end
 
+  def delete
+    Podcast.find(params[:id]).destroy
+    redirect_to "/podcasts"
+  end
+
   private
   def podcast_params
     params.permit(:name,:in_production,:ad_slot_cost)
