@@ -8,4 +8,5 @@ class Podcast < ApplicationRecord
   def self.order_by_recently_created_first
     order(created_at: :desc)
   end
+
 end

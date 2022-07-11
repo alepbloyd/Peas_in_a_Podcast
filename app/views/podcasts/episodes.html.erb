@@ -7,8 +7,6 @@
 <p><%= form.submit "Show episodes above input number of seconds"%></p>
 <% end %>
 
-<%# /podcasts/#{podcast.id}/episodes?above_length= %>
-
 <% @episodes.each_with_index do |episode,index|%>
 <div id="episode-<%=index+1%>">
 <h2>Title: <%= episode.title%> </h2>
