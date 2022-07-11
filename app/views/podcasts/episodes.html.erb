@@ -1,6 +1,14 @@
 <h1><%= @podcast.name%></h1>
 <p><%= link_to "Create Episode","/podcasts/#{@podcast.id}/episodes/new"%></p>
 <p><%= link_to "Sort alphabetically", "/podcasts/#{@podcast.id}/episodes?sort=alpha"%>
+
+<%= form_with url: "/podcasts/#{@podcast.id}/episodes?minimum_length=", method: :get, local: true do |form|%>
+<p>Mininum Length: <%= form.number_field :minimum_length%> </p>
+<p><%= form.submit "Show episodes above input number of seconds"%></p>
+<% end %>
+
+<%# /podcasts/#{podcast.id}/episodes?above_length= %>
+
 <% @episodes.each_with_index do |episode,index|%>
 <div id="episode-<%=index+1%>">
 <h2>Title: <%= episode.title%> </h2>

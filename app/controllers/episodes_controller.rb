@@ -5,6 +5,7 @@ class EpisodesController < ApplicationController
 
   def show
     @episode = Episode.find(params[:id])
+    # require 'pry'; binding.pry 
   end
 
   def new
@@ -35,6 +36,6 @@ class EpisodesController < ApplicationController
 
   private
   def episode_params
-    params.permit(:title, :length_in_seconds, :marked_explicit,:podcast_id)
+    params.permit(:title, :length_in_seconds, :marked_explicit,:podcast_id, :minimum_length)
   end
 end

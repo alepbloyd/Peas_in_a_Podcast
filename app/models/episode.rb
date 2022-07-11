@@ -12,4 +12,8 @@ class Episode < ApplicationRecord
   def self.alphabetical
     order(title: :asc)
   end
+
+  def self.above_set_length(number)
+    where("length_in_seconds > ?", number)
+  end
 end
