@@ -177,3 +177,16 @@ body {
 .sort-button:hover {
   background-color: #016d2e;
 }
+
+.details-button {
+  background-color: #035d91;
+  color: black;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  text-decoration: none;
+}
+
+.details-button:hover {
+  background-color: #1d87c5;
+}

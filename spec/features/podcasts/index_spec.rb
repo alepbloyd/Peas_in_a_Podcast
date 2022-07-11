@@ -86,4 +86,22 @@ RSpec.describe 'podcast index', type: :feature do
     end
   end
 
+  it 'has link to podcast details page' do
+    podcast_1 = Podcast.create!(name: "Criminal", in_production: true, ad_slot_cost: 950.25)
+    podcast_2 = Podcast.create!(name: "Maintenance Phase", in_production: true, ad_slot_cost: 500)
+    podcast_3 = Podcast.create!(name: "The Daily", in_production: true, ad_slot_cost: 875.69)
+    podcast_4 = Podcast.create!(name: "This American Life", in_production: false, ad_slot_cost: 1400)
+
+    p1_e1 = podcast_1.episodes.create!(title: "test_ep_1", marked_explicit: true, length_in_seconds: 23)
+    p1_e2 = podcast_1.episodes.create!(title: "test_ep_2", marked_explicit: true, length_in_seconds: 26)
+
+    visit '/podcasts'
+
+    within '#podcast-1' do
+      click_link "Details"
+      expect(current_path).to eq("/podcasts/#{podcast_4.id}")
+    end
+
+  end
+
 end
