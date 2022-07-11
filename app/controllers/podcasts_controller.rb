@@ -11,6 +11,8 @@ class PodcastsController < ApplicationController
     @podcast = Podcast.find(params[:id])
     if params[:sort] == "alpha"
       @episodes = @podcast.episodes.alphabetical
+    elsif params[:minimum_length] != nil
+      @episodes = @podcast.episodes.above_set_length(params[:minimum_length])
     else
       @episodes = @podcast.episodes
     end

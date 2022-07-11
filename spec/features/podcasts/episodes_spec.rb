@@ -51,4 +51,27 @@ RSpec.describe 'podcasts/:id/episodes', type: :feature do
 
   end
 
+  it 'has form that allows user to put in a number value and submit to only display episodes above submitted number of seconds' do
+    podcast = Podcast.create!(name: "Criminal", in_production: true, ad_slot_cost: 950.25)
+
+    episode_1 = podcast.episodes.create!(title: "B - the B Episode", length_in_seconds: 10, marked_explicit: true)
+    episode_2 = podcast.episodes.create!(title: "C - the C Episode", length_in_seconds: 20, marked_explicit: false)
+    episode_3 = podcast.episodes.create!(title: "A - the A Episode", length_in_seconds: 30, marked_explicit: true)
+    episode_4 = podcast.episodes.create!(title: "D - the D Episode", length_in_seconds: 40, marked_explicit: true)
+
+    visit "/podcasts/#{podcast.id}/episodes"
+
+    fill_in 'minimum_length', with: 22
+
+    click_on 'Show episodes above input number of seconds'
+
+    expect(current_path).to eq("/podcasts/#{podcast.id}/episodes")
+
+    expect(page).to have_content("A - the A Episode")
+    expect(page).to have_content("D - the D Episode")
+
+    expect(page).to_not have_content("B - the B Episode")
+    expect(page).to_not have_content("C - the C Episode")
+  end
+
 end
