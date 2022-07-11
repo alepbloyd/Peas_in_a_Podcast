@@ -18,6 +18,10 @@
 
       <p class = "content-title"> <%= podcast.name %></p> 
 
+      <span class="podcast-details-link">
+      <%= link_to "Details","/podcasts/#{podcast.id}", class: "details-button"%>
+      </span>
+      
       <span id="edit-podcast-<%=podcast.id%>"><%= link_to "Edit", "/podcasts/#{podcast.id}/edit", class: 'edit-button'%> 
       </span>
 

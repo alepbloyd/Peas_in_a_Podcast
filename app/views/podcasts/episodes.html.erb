@@ -13,7 +13,7 @@
 
     <p>Mininum Length: <%= form.number_field :minimum_length%> </p>
 
-    <p><%= form.submit "Show episodes above input number of seconds"%></p>
+    <p><%= form.submit "Show episodes above input number of seconds",class: "sort-button"%></p>
 
   <% end %>
 </div>
@@ -23,7 +23,7 @@
 <% @episodes.each_with_index do |episode,index|%>
 <div class="content-box">
   <div id="episode-<%=index+1%>">
-    <h2>Title: <%= episode.title%> </h2>
+    <h2><%= episode.title%> </h2>
     <p><%= link_to "Edit", "/episodes/#{episode.id}/edit",class: "edit-button"%> </p>
     <p>Length in Seconds: <%= episode.length_in_seconds%></p>
     <p>Explicit: <%= episode.marked_explicit%></p>
