@@ -1,13 +1,17 @@
-<%= form_with url: "/episodes/#{@episode.id}", method: :patch, local: true do |form|%>
+<div class="content-box">
 
-  <h1><%= form.label "Update Episode, #{@episode.title}"%></h1>
+  <%= form_with url: "/episodes/#{@episode.id}", method: :patch, local: true do |form|%>
 
-  <p>Title: <%= form.text_field :title %></p>
+    <h1><%= form.label "Update Episode, #{@episode.title}"%></h1>
 
-  <p id="marked_explicit">Check if episode is explicit: <%= form.check_box :marked_explicit, {},"true","false"%></p>
+    <p>Title: <%= form.text_field :title %></p>
 
-  <p>Length in Seconds: <%= form.number_field :length_in_seconds%></p>
+    <p id="marked_explicit">Check if episode is explicit: <%= form.check_box :marked_explicit, {},"true","false"%></p>
 
-  <p><%= form.submit "Update Episode"%></p>
+    <p>Length in Seconds: <%= form.number_field :length_in_seconds%></p>
 
-<% end %>
+    <p><%= form.submit "Update Episode",class: 'submit-button'%></p>
+
+  <% end %>
+
+</div>

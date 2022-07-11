@@ -25,7 +25,7 @@
   align-items: center;
   gap: 20px;
   background-color: #004f04;
-  height: 60px
+  height: 70px
  }
 
  #banner-link-group {
@@ -38,14 +38,14 @@
  }
 
  #page-title {
-  margin-left: 40px;
+  margin-left: 20px;
   font-size: 40px;
   flex: 4;
   color: #E1E2E1;
  }
  
 .banner-link {
-  background-color: #00186F;
+  background-color: #035d91;
   color: #E1E2E1;
   padding: 10px;
   border-radius: 10px;
@@ -53,15 +53,33 @@
 }
 
 .banner-link:hover {
-  background-color: #6668d0;
+  background-color: #1d87c5;
 }
 
 body {
   background-color: #E1E2E1;
 }
 
-#index-options {
+.page-options {
   background-color: #60ad5e;
+  display: flex;
+  justify-content: space-between;
+}
+
+.page-options-links {
+  flex:1;
+}
+
+.content-options-title {
+  flex: 1;
+}
+
+.content-options-title {
+  color: #E1E2E1;
+}
+
+.page-options-title {
+  flex: 1;
 }
 
 #podcast-index-box {
@@ -78,12 +96,13 @@ body {
   margin: 10px;
   padding-left: 20px;
   padding-right: 80px;
-  border-radius: 30px;
+  border-radius: 20px;
   max-width: max-content; 
 }
 
 .content-title {
   font-size: x-large;
+  flex: 1;
 }
 
 .edit-button {
@@ -116,5 +135,45 @@ body {
   background-color: #2e7c31;
   border-color: #2E7D32;
   padding-left: 20px;
+  padding-right: 40px;
   padding-bottom: 10px;
+  align-items: center;
+  display: flex;
+}
+
+.delete-button {
+  background-color: #930344;
+  color: #E1E2E1;
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.delete-button:hover {
+  background-color: #aa6785;
+}
+
+.submit-button {
+  background-color: #E1E2E1;
+  color: black;
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.submit-button:hover {
+  background-color: #989c98;
+}
+
+.sort-button {
+  background-color: #02421d;
+  color: black;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  text-decoration: none;
+}
+
+.sort-button:hover {
+  background-color: #016d2e;
 }

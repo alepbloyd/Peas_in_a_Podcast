@@ -1,5 +1,9 @@
-<h1> <%= @episode.title %> </h1>
-<p><%= link_to "Update Episode", "/episodes/#{@episode.id}/edit"%> </p>
-<p><%= link_to "Delete Episode", "/episodes/#{@episode.id}/delete"%></p>
-<p> Length in Seconds: <%= @episode.length_in_seconds %> </p>
-<p> Explicit: <%= @episode.marked_explicit%>
+<div class="content-box">
+
+  <h1> <%= @episode.title %> </h1>
+  <p><span><%= link_to "Update Episode", "/episodes/#{@episode.id}/edit", class: "edit-button"%></span>
+  <span><%= link_to "Delete Episode", "/episodes/#{@episode.id}/delete",class: "delete-button"%></span></p>
+  <p> Length in Seconds: <%= @episode.length_in_seconds %> </p>
+  <p> Explicit: <%= @episode.marked_explicit%>
+
+</div>

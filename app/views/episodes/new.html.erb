@@ -1,8 +1,19 @@
-<%= form_with url: "/episodes", method: :post, local: true do |form| %>
-  <h1><%= form.label 'Create New Episode'%></h1>
-  <p>Title: <%= form.text_field :title%> </p>
-  <p>Length in Seconds: <%=form.number_field :length_in_seconds %> </p>
-  <p>Check if explicit: <%= form.check_box :marked_explicit, {},"true","false"%> </p>
-  <p><%= form.submit "Create Episode"%></p>
-  <%= form.hidden_field :podcast_id, value: @podcast.id%>
+<div class="content-box">
+
+  <%= form_with url: "/episodes", method: :post, local: true do |form| %>
+
+    <h1><%= form.label 'Create New Episode'%></h1>
+
+    <p>Title: <%= form.text_field :title%> </p>
+
+    <p>Length in Seconds: <%=form.number_field :length_in_seconds %> </p>
+
+    <p>Check if explicit: <%= form.check_box :marked_explicit, {},"true","false"%> </p>
+
+    <p><%= form.submit "Create Episode", class: "submit-button"%></p>
+
+    <%= form.hidden_field :podcast_id, value: @podcast.id%>
+    
   <% end %>
+
+</div>

@@ -1,17 +1,32 @@
-<h1><%= @podcast.name%></h1>
-<p><%= link_to "Create Episode","/podcasts/#{@podcast.id}/episodes/new"%></p>
-<p><%= link_to "Sort alphabetically", "/podcasts/#{@podcast.id}/episodes?sort=alpha"%>
+<div class="content-options">
 
-<%= form_with url: "/podcasts/#{@podcast.id}/episodes?minimum_length=", method: :get, local: true do |form|%>
-<p>Mininum Length: <%= form.number_field :minimum_length%> </p>
-<p><%= form.submit "Show episodes above input number of seconds"%></p>
-<% end %>
+  <div class="content-options-title">
+    <h1><%= @podcast.name%></h1>
+  </div>
+
+  <div class="content-option-links">
+    <span><%= link_to "Create Episode","/podcasts/#{@podcast.id}/episodes/new",class: "create-button"%></span>
+    <span><%= link_to "Sort alphabetically", "/podcasts/#{@podcast.id}/episodes?sort=alpha",class: "sort-button"%></span>
+  </div>
+
+  <%= form_with url: "/podcasts/#{@podcast.id}/episodes?minimum_length=", method: :get, local: true do |form|%>
+
+    <p>Mininum Length: <%= form.number_field :minimum_length%> </p>
+
+    <p><%= form.submit "Show episodes above input number of seconds"%></p>
+
+  <% end %>
+</div>
+
+
 
 <% @episodes.each_with_index do |episode,index|%>
-<div id="episode-<%=index+1%>">
-<h2>Title: <%= episode.title%> </h2>
-<p><%= link_to "Edit", "/episodes/#{episode.id}/edit"%> </p>
-<p>Length in Seconds: <%= episode.length_in_seconds%></p>
-<p>Explicit: <%= episode.marked_explicit%></p>
+<div class="content-box">
+  <div id="episode-<%=index+1%>">
+    <h2>Title: <%= episode.title%> </h2>
+    <p><%= link_to "Edit", "/episodes/#{episode.id}/edit",class: "edit-button"%> </p>
+    <p>Length in Seconds: <%= episode.length_in_seconds%></p>
+    <p>Explicit: <%= episode.marked_explicit%></p>
+  </div>
 </div>
 <% end %>
