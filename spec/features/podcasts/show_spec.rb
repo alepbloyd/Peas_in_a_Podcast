@@ -59,8 +59,6 @@ RSpec.describe 'podcast show', type: :feature do
 
     visit "/episodes"
 
-    save_and_open_page
-
     expect(page).to have_content("S: EPISODE ONE")
     expect(page).to have_content("S: EPISODE TWO")
     expect(page).to_not have_content("C: EPISODE ONE")

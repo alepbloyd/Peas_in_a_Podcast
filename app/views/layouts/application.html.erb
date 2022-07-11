@@ -10,8 +10,23 @@
   </head>
 
   <body>
-    <%= link_to "Podcast Index", "/podcasts"%>
-    <%= link_to "Episode Index", "/episodes"%>
-    <%= yield %>
+    <div id="page-banner">
+      <div id="page-title">
+        Title
+      </div>
+      <div id="index-link-group">
+        <div class="banner-link">
+          <%= link_to "Podcasts", "/podcasts"%>
+        </div>
+        <div class="banner-link">
+          <%= link_to "Episodes", "/episodes"%>
+        </div>
+      </div>
+    </div>
+
+    <div id="main-content">
+      <%= yield %>
+    </div>
+
   </body>
 </html>

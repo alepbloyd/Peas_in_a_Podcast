@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   get '/podcasts/:id/episodes', to: 'podcasts#episodes'
 
   get '/podcasts/:id/delete', to: 'podcasts#delete'
+
+  get 'episodes/:id/delete', to: 'episodes#delete'
 end
