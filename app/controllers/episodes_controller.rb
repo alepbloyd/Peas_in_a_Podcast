@@ -27,6 +27,12 @@ class EpisodesController < ApplicationController
     redirect_to "/podcasts/#{@episode.podcast_id}/episodes"
   end
 
+  def delete
+    Episode.find(params[:id]).destroy
+    redirect_to "/episodes"
+  end
+  
+
   private
   def episode_params
     params.permit(:title, :length_in_seconds, :marked_explicit,:podcast_id)
