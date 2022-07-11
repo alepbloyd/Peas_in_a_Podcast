@@ -1,8 +1,26 @@
-<h1> Podcast List </h1>
-<p><%= link_to "Create new podcast", "/podcasts/new"%></p>
-<% @podcasts.each_with_index do |podcast, index| %>
-<div id="podcast-<%=index+1%>">
-<p><b> <%= podcast.name %></b> <span id="edit-podcast-<%=podcast.id%>"><%= link_to "Edit", "/podcasts/#{podcast.id}/edit"%> </span></p>
-<p>Created at: <%= podcast.created_at %></p>
+<div class="content-options">
+
+  <h1> Podcast index </h1>
+
+  <p><%= link_to "Create new podcast", "/podcasts/new", class: 'create-button'%></p>
+
 </div>
+
+<div id="podcast-index-box">
+<% @podcasts.each_with_index do |podcast, index| %>
+  <div class="content-box">
+
+    <div id="podcast-<%=index+1%>">
+
+      <p class = "content-title"> <%= podcast.name %></p> 
+
+      <span id="edit-podcast-<%=podcast.id%>"><%= link_to "Edit", "/podcasts/#{podcast.id}/edit", class: 'edit-button'%> 
+      </span>
+
+      <p>Created at: <%= podcast.created_at %></p>
+
+    </div>
+
+  </div>
 <% end %>
+</div>

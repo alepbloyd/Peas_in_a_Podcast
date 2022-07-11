@@ -1,8 +1,26 @@
-<% @episodes.each_with_index do |episode,index| %>
-<div id="episode-<%=index+1%>">
-<h1><%= episode.title %> </h1>
-<p><%= link_to "Edit", "/episodes/#{episode.id}/edit"%></p>
-<p>Length in seconds: <%= episode.length_in_seconds%> </p>
-<p>Marked explicit: <%= episode.marked_explicit%> </p>
+<div class="content-options">
+
+  <h1> Episodes </h1>
+
 </div>
-<% end %>
+
+<div id="episode-index-box">
+  <% @episodes.each_with_index do |episode,index| %>
+
+    <div class="content-box">
+
+      <div id="episode-<%=index+1%>">
+
+        <p class = "content-title"><%= episode.title %> </p>
+
+        <p><%= link_to "Edit", "/episodes/#{episode.id}/edit", class: 'edit-button'%></p>
+
+        <p>Length in seconds: <%= episode.length_in_seconds%> </p>
+        <p>Marked explicit: <%= episode.marked_explicit%> </p>
+
+      </div>
+
+    </div>
+
+  <% end %>
+</div>
