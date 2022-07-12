@@ -8,6 +8,13 @@
     <div class="content-option">
       <%= link_to "Create new podcast", "/podcasts/new", class: 'create-button'%>
     </div>
+
+     <div class="content-option">
+        <%= link_to "Sort by Number of Episodes", "/podcasts?sort=episode_count",class: "sort-button"%>
+      </div>
+  </div>
+
+    
   </div>
 
 </div>
@@ -18,7 +25,11 @@
 
     <div id="podcast-<%=index+1%>">
 
-      <p class = "content-title"> <%= podcast.name %></p> 
+      <p class ="content-title"> <%= podcast.name %></p> 
+
+      <p id ="podcast-<%=index+1%>-episode-count">
+      <%= podcast.episodes.size%>
+      </p>
 
       <span class="podcast-details-link">
       <%= link_to "Details","/podcasts/#{podcast.id}", class: "details-button"%>

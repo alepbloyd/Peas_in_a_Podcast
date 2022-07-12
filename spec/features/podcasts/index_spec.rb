@@ -123,6 +123,55 @@ RSpec.describe 'podcast index', type: :feature do
 
     expect(page).to have_content(podcast_3.name)
     expect(page).to_not have_content(podcast_4.name)
+  end
+
+  it 'has link to sort podcasts by number of episodes, returning user to index, and has number of episodes next to each podcast name' do
+
+    podcast_1 = Podcast.create!(name: "Criminal", in_production: true, ad_slot_cost: 950.25)
+    podcast_2 = Podcast.create!(name: "Maintenance Phase", in_production: true, ad_slot_cost: 500)
+    podcast_3 = Podcast.create!(name: "The Daily", in_production: true, ad_slot_cost: 875.69)
+
+    p1_e1 = podcast_1.episodes.create!(title: "test_ep_1", marked_explicit: true, length_in_seconds: 23)
+    p1_e2 = podcast_1.episodes.create!(title: "test_ep_2", marked_explicit: true, length_in_seconds: 26)
+    p1_e3 = podcast_1.episodes.create!(title: "test_ep_3", marked_explicit: true, length_in_seconds: 26)
+
+    p2_e1 = podcast_2.episodes.create!(title: "test_ep_1", marked_explicit: true, length_in_seconds: 23)
+    p2_e2 = podcast_2.episodes.create!(title: "test_ep_2", marked_explicit: true, length_in_seconds: 26)
+    p2_e3 = podcast_2.episodes.create!(title: "test_ep_3", marked_explicit: true, length_in_seconds: 26)
+    p2_e4 = podcast_2.episodes.create!(title: "test_ep_4", marked_explicit: true, length_in_seconds: 26)
+    p2_e5 = podcast_2.episodes.create!(title: "test_ep_5", marked_explicit: true, length_in_seconds: 26)
+
+    p3_e1 = podcast_3.episodes.create!(title: "test_ep_1", marked_explicit: true, length_in_seconds: 26)
+
+    visit "/podcasts"
+
+    click_link "Sort by Number of Episodes"
+
+    expect(current_path).to eq("/podcasts")
+
+    within "#podcast-1" do
+      expect(page).to have_content(podcast_2.name)
+    end
+
+    within '#podcast-2' do
+      expect(page).to have_content(podcast_1.name)
+    end
+
+    within '#podcast-3' do
+      expect(page).to have_content(podcast_3.name)
+    end
+
+    within '#podcast-1-episode-count' do
+      expect(page).to have_content("5")
+    end
+
+    within '#podcast-2-episode-count' do
+      expect(page).to have_content("3")
+    end
+
+    within '#podcast-3-episode-count' do
+      expect(page).to have_content("1")
+    end
 
   end
 

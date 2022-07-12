@@ -42,7 +42,7 @@ display: flex;
 justify-content: flex-end;
 margin: 40px;
 gap: 40px;
-max-width: 100px;
+/* max-width: 100px; */
 }
 
 #page-title {
@@ -120,7 +120,7 @@ body {
 .content-option {
   flex: 1;
   gap: 20px;
-  max-width: 200px;
+  /* max-width: 200px; */
   margin-left: auto; 
   margin-right: 0;
 }

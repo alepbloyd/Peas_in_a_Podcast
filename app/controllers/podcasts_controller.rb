@@ -1,6 +1,10 @@
 class PodcastsController < ApplicationController
   def index
-    @podcasts = Podcast.all.order_by_recently_created_first
+    if params[:sort] == "episode_count"
+      @podcasts = Podcast.all.order_by_episode_count
+    else
+      @podcasts = Podcast.all.order_by_recently_created_first
+    end
   end
 
   def show
