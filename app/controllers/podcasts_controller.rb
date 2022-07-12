@@ -27,18 +27,18 @@ class PodcastsController < ApplicationController
 
   def create
     Podcast.create(podcast_params)
-    redirect_to '/podcasts'
+    redirect_to '/podcasts', notice: "Podcast created!"
   end
 
   def update
     podcast = Podcast.find(params[:id])
     podcast.update(podcast_params)
-    redirect_to "/podcasts/#{params[:id]}"
+    redirect_to "/podcasts/#{params[:id]}", notice: "Podcast updated!"
   end
 
   def delete
     Podcast.find(params[:id]).destroy
-    redirect_to "/podcasts"
+    redirect_to "/podcasts", notice: "Podcast deleted!"
   end
 
   private
