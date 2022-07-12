@@ -63,7 +63,7 @@ RSpec.describe 'podcasts/:id/episodes', type: :feature do
 
     fill_in 'minimum_length', with: 22
 
-    click_on 'Show episodes above input number of seconds'
+    click_on 'Show Episodes Above Length'
 
     expect(current_path).to eq("/podcasts/#{podcast.id}/episodes")
 
@@ -95,7 +95,6 @@ RSpec.describe 'podcasts/:id/episodes', type: :feature do
     expect(page).to have_content(episode_2.title)
     expect(page).to have_content(episode_3.title)
     expect(page).to have_content(episode_4.title)
-
   end
 
 end

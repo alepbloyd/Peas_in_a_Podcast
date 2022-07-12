@@ -1,21 +1,32 @@
-<div class="content-options">
+<div class="content-options-container">
 
   <div class="content-options-title">
     <h1><%= @podcast.name%></h1>
   </div>
 
-  <div class="content-option-links">
-    <span><%= link_to "Create Episode","/podcasts/#{@podcast.id}/episodes/new",class: "create-button"%></span>
-    <span><%= link_to "Sort alphabetically", "/podcasts/#{@podcast.id}/episodes?sort=alpha",class: "sort-button"%></span>
+  <div class="content-options">
+
+    <div class="content-option">
+      <%= link_to "Create Episode","/podcasts/#{@podcast.id}/episodes/new",class: "create-button"%>
+    </div>
+
+    <div class="content-option">
+      <%= link_to "Sort alphabetically", "/podcasts/#{@podcast.id}/episodes?sort=alpha",class: "sort-button"%>
+    </div>
+
+    <div class="content-option">
+      <%= form_with url: "/podcasts/#{@podcast.id}/episodes?minimum_length=", method: :get, local: true do |form|%>
+
+        Mininum Length: <%= form.number_field :minimum_length%>
+        
+        <br></br>
+
+        <%= form.submit "Show Episodes Above Length",class: "sort-button"%>
+      <% end %>
+    </div>
+
   </div>
 
-  <%= form_with url: "/podcasts/#{@podcast.id}/episodes?minimum_length=", method: :get, local: true do |form|%>
-
-    <p>Mininum Length: <%= form.number_field :minimum_length%> </p>
-
-    <p><%= form.submit "Show episodes above input number of seconds",class: "sort-button"%></p>
-
-  <% end %>
 </div>
 
 
