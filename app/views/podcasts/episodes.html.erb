@@ -36,13 +36,14 @@
   <div id="episode-<%=index+1%>">
     <h2><%= episode.title%> </h2>
 
+    <p><%= episode.time_format%></p>
+
+    <p>Explicit: <%= episode.marked_explicit%></p>
+
     <span><%= link_to "Edit", "/episodes/#{episode.id}/edit",class: "edit-button"%> </span>
 
     <span><%= link_to "Delete", "/episodes/#{episode.id}/delete",class: "delete-button" %></span>
 
-    <p><%= episode.time_format%></p>
-
-    <p>Explicit: <%= episode.marked_explicit%></p>
   </div>
 </div>
 <% end %>

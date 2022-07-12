@@ -27,9 +27,12 @@
 
       <p class ="content-title"> <%= podcast.name %></p> 
 
-      <p id ="podcast-<%=index+1%>-episode-count">
+      <p id ="podcast-<%=index+1%>-episode-count">Episode Count:
       <%= podcast.episodes.size%>
       </p>
+
+      <p>Created on: <%= podcast.created_date_format %></p>
+      <p>Updated on: <%= podcast.updated_date_format %></p>
 
       <span class="podcast-details-link">
       <%= link_to "Details","/podcasts/#{podcast.id}", class: "details-button"%>
@@ -41,9 +44,6 @@
       <span class="podcast-details-link">
         <%= link_to "Delete","/podcasts/#{podcast.id}/delete",class: "delete-button"%>
       </span>
-
-      <p>Created at: <%= podcast.created_at %></p>
-      <p>Updated at: <%= podcast.updated_at %></p>
 
     </div>
 
