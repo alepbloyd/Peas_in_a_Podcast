@@ -9,4 +9,8 @@ class Podcast < ApplicationRecord
     order(created_at: :desc)
   end
 
+  def self.order_by_episode_count
+    order(episodes_count: :desc)
+  end
+
 end
