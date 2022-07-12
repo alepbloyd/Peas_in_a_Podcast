@@ -74,4 +74,28 @@ RSpec.describe 'podcasts/:id/episodes', type: :feature do
     expect(page).to_not have_content("C - the C Episode")
   end
 
+  it 'has delete link next to each episode, deleting the episode and returning to the episode index page' do
+    podcast = Podcast.create!(name: "Criminal", in_production: true, ad_slot_cost: 950.25)
+
+    episode_1 = podcast.episodes.create!(title: "B - the B Episode", length_in_seconds: 10, marked_explicit: true)
+    episode_2 = podcast.episodes.create!(title: "C - the C Episode", length_in_seconds: 20, marked_explicit: true)
+    episode_3 = podcast.episodes.create!(title: "A - the A Episode", length_in_seconds: 30, marked_explicit: true)
+    episode_4 = podcast.episodes.create!(title: "D - the D Episode", length_in_seconds: 40, marked_explicit: true)
+
+    visit "/podcasts/#{podcast.id}/episodes"
+
+    within "#episode-1" do
+      click_link "Delete"
+    end
+
+    expect(current_path).to eq("/episodes")
+
+    expect(page).to_not have_content(episode_1.title)
+
+    expect(page).to have_content(episode_2.title)
+    expect(page).to have_content(episode_3.title)
+    expect(page).to have_content(episode_4.title)
+
+  end
+
 end

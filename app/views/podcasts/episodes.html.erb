@@ -24,8 +24,13 @@
 <div class="content-box">
   <div id="episode-<%=index+1%>">
     <h2><%= episode.title%> </h2>
-    <p><%= link_to "Edit", "/episodes/#{episode.id}/edit",class: "edit-button"%> </p>
+
+    <span><%= link_to "Edit", "/episodes/#{episode.id}/edit",class: "edit-button"%> </span>
+
+    <span><%= link_to "Delete", "/episodes/#{episode.id}/delete",class: "delete-button" %></span>
+
     <p>Length in Seconds: <%= episode.length_in_seconds%></p>
+
     <p>Explicit: <%= episode.marked_explicit%></p>
   </div>
 </div>
