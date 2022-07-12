@@ -3,7 +3,7 @@
   <h1> <%= @episode.title %> </h1>
   <p><span><%= link_to "Update Episode", "/episodes/#{@episode.id}/edit", class: "edit-button"%></span>
   <span><%= link_to "Delete Episode", "/episodes/#{@episode.id}/delete",class: "delete-button"%></span></p>
-  <p> Length in Seconds: <%= @episode.length_in_seconds %> </p>
+  <p> Length in Seconds: <%= @episode.time_format %> </p>
   <p> Explicit: <%= @episode.marked_explicit%>
 
 </div>
