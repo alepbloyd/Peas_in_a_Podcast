@@ -25,6 +25,10 @@
       <span id="edit-podcast-<%=podcast.id%>"><%= link_to "Edit", "/podcasts/#{podcast.id}/edit", class: 'edit-button'%> 
       </span>
 
+      <span class="podcast-details-link">
+        <%= link_to "Delete","/podcasts/#{podcast.id}/delete",class: "delete-button"%>
+      </span>
+
       <p>Created at: <%= podcast.created_at %></p>
       <p>Updated at: <%= podcast.updated_at %></p>
 
