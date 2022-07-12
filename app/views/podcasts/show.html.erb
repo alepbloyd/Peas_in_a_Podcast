@@ -1,11 +1,14 @@
 <div class="content-box">
 
   <h1> <%= @podcast.name %> </h1>
-  <p><span><%= link_to "Edit Podcast Info", "/podcasts/#{@podcast.id}/edit", class: 'edit-button'%></span>
-  <span><%= link_to "Delete Podcast", "/podcasts/#{@podcast.id}/delete", class: 'delete-button'%></span></p>
-  <h2><%= link_to "Episodes", "/podcasts/#{@podcast.id}/episodes"%></h2>
+  <span><%= link_to "Episodes", "/podcasts/#{@podcast.id}/episodes",class:"details-button"%></span>
+  <span><%= link_to "Edit Podcast Info", "/podcasts/#{@podcast.id}/edit", class: 'edit-button'%></span>
+  <span><%= link_to "Delete Podcast", "/podcasts/#{@podcast.id}/delete", class: 'delete-button'%></span>
+
   <p>Number of Episodes: <%= @podcast.episodes.count%></p>
+
   <p>In Production: <%= @podcast.in_production %> </p>
+  
   <p>Advertisement Cost: $<%= @podcast.ad_slot_cost%></p>
 
 </div>
