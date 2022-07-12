@@ -15,11 +15,12 @@
 
         <p class = "content-title"><%= episode.title %> </p>
 
+        <p> <%= episode.time_format%> </p>
+
+        <p>Marked explicit: <%= episode.marked_explicit%> </p>
+
         <span><%= link_to "Edit", "/episodes/#{episode.id}/edit", class: 'edit-button'%></span>
         <span><%= link_to "Delete","/episodes/#{episode.id}/delete",class:"delete-button"%></span>
-
-        <p>Length in seconds: <%= episode.length_in_seconds%> </p>
-        <p>Marked explicit: <%= episode.marked_explicit%> </p>
 
       </div>
 

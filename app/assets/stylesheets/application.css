@@ -19,6 +19,12 @@ html, body{
   padding: 0px;
 }
 
+#page-logo {
+  margin-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
 .flash-notice {
   padding-left: 20px;
   font-size: large;
@@ -45,11 +51,17 @@ gap: 40px;
 /* max-width: 100px; */
 }
 
-#page-title {
+#page-title-container {
 margin-left: 20px;
 font-size: 40px;
 flex: 4;
 color: #E1E2E1;
+text-decoration: none;
+}
+
+.page-title-link {
+  color: #E1E2E1;
+  text-decoration: none;
 }
 
 body {
@@ -70,6 +82,7 @@ body {
   margin: 10px;
   padding-left: 20px;
   padding-right: 80px;
+  padding-bottom: 20px;
   border-radius: 20px;
   max-width: max-content; 
   min-width: max-content;

@@ -11,8 +11,11 @@
 
   <body>
     <div id="page-banner">
-      <div id="page-title">
-        Podcast/Episode Database
+      <div id="page-logo">
+        <%= image_tag("peapod_logo.png",size:"65x65", :alt => "peapod logo")%>
+      </div>
+      <div id="page-title-container">
+        <%= link_to "Peas In a Podcast", "/podcasts",class: "page-title-link"%>
       </div>
       <div id="banner-link-group">
         <%= link_to "Podcasts", "/podcasts", class: 'banner-link'%>

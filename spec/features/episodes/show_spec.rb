@@ -15,7 +15,7 @@ RSpec.describe 'episode show', type: :feature do
     visit "/episodes/#{episode_1.id}"
 
     expect(page).to have_content(episode_1.title)
-    expect(page).to have_content(episode_1.length_in_seconds)
+    expect(page).to have_content(episode_1.time_format)
     expect(page).to have_content(episode_1.marked_explicit)
   end
 

@@ -19,7 +19,7 @@ RSpec.describe 'podcasts/:id/episodes', type: :feature do
 
     expect(page).to have_content(podcast_1.name)
     expect(page).to have_content(episode_1.title)
-    expect(page).to have_content(episode_1.length_in_seconds)
+    expect(page).to have_content(episode_1.time_format)
     expect(page).to have_content(episode_1.marked_explicit)
   end
 

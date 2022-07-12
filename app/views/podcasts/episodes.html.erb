@@ -17,7 +17,7 @@
     <div class="content-option">
       <%= form_with url: "/podcasts/#{@podcast.id}/episodes?minimum_length=", method: :get, local: true do |form|%>
 
-        Mininum Length: <%= form.number_field :minimum_length%>
+        Mininum Length in Seconds: <%= form.number_field :minimum_length%>
         
         <br></br>
 
@@ -36,13 +36,14 @@
   <div id="episode-<%=index+1%>">
     <h2><%= episode.title%> </h2>
 
+    <p><%= episode.time_format%></p>
+
+    <p>Explicit: <%= episode.marked_explicit%></p>
+
     <span><%= link_to "Edit", "/episodes/#{episode.id}/edit",class: "edit-button"%> </span>
 
     <span><%= link_to "Delete", "/episodes/#{episode.id}/delete",class: "delete-button" %></span>
 
-    <p>Length in Seconds: <%= episode.length_in_seconds%></p>
-
-    <p>Explicit: <%= episode.marked_explicit%></p>
   </div>
 </div>
 <% end %>

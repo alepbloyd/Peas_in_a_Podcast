@@ -13,4 +13,12 @@ class Podcast < ApplicationRecord
     order(episodes_count: :desc)
   end
 
+  def created_date_format
+    self.created_at.strftime("%a, %e %b %Y, %H:%M:%S")
+  end
+
+  def updated_date_format
+    self.updated_at.strftime("%a, %e %b %Y, %H:%M:%S")
+  end
+
 end
