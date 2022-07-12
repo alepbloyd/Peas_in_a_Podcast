@@ -5,7 +5,6 @@ class EpisodesController < ApplicationController
 
   def show
     @episode = Episode.find(params[:id])
-    # require 'pry'; binding.pry 
   end
 
   def new
@@ -19,18 +18,18 @@ class EpisodesController < ApplicationController
   def update
     episode = Episode.find(params[:id])
     episode.update(episode_params)
-    redirect_to "/episodes/#{params[:id]}"
+    redirect_to "/episodes/#{params[:id]}", notice: "Episode updated!"
   end
 
   def create
     @episode = Episode.create(episode_params)
 
-    redirect_to "/podcasts/#{@episode.podcast_id}/episodes"
+    redirect_to "/podcasts/#{@episode.podcast_id}/episodes", notice: "Episode created!"
   end
 
   def delete
     Episode.find(params[:id]).destroy
-    redirect_to "/episodes"
+    redirect_to "/episodes", notice: "Episode deleted!"
   end
   
 

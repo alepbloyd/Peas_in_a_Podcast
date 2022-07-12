@@ -19,31 +19,38 @@ html, body{
   padding: 0px;
 }
 
+.flash-notice {
+  padding-left: 20px;
+  font-size: large;
+  background-color: #60ac5d;
+  color: black;
+  height: 30px;
+}
 
- #page-banner {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 20px;
-  background-color: #004f04;
-  height: 70px
- }
+#page-banner {
+display: flex;
+justify-content: flex-end;
+align-items: center;
+gap: 20px;
+background-color: #004f04;
+height: 70px
+}
 
- #banner-link-group {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-  margin: 40px;
-  gap: 40px;
-  max-width: 100px;
- }
+#banner-link-group {
+flex: 1;
+display: flex;
+justify-content: flex-end;
+margin: 40px;
+gap: 40px;
+max-width: 100px;
+}
 
- #page-title {
-  margin-left: 20px;
-  font-size: 40px;
-  flex: 4;
-  color: #E1E2E1;
- }
+#page-title {
+margin-left: 20px;
+font-size: 40px;
+flex: 4;
+color: #E1E2E1;
+}
 
 body {
   background-color: #E1E2E1;
@@ -114,6 +121,8 @@ body {
   flex: 1;
   gap: 20px;
   max-width: 200px;
+  margin-left: auto; 
+  margin-right: 0;
 }
 
 .delete-button {
