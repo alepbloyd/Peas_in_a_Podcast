@@ -48,4 +48,18 @@ RSpec.describe Episode, type: :model do
 
     expect(Episode.only_display_explicit).to eq([episode_1,episode_3,episode_4])
   end
+
+  it 'sorts episodes alphabetically' do
+    podcast_1 = Podcast.create!(name: "This Canadian Death", in_production: true, ad_slot_cost: 950.25)
+    
+    episode_1 = podcast_1.episodes.create!(title: "B", length_in_seconds: 5000, marked_explicit: true)
+
+    episode_2 = podcast_1.episodes.create!(title: "A", length_in_seconds: 65, marked_explicit: false)
+    
+    episode_3 = podcast_1.episodes.create!(title: "D", length_in_seconds: 121, marked_explicit: true)
+
+    episode_4 = podcast_1.episodes.create!(title: "C", length_in_seconds: 30000, marked_explicit: true)
+
+    expect(Episode.alphabetical).to eq([episode_2,episode_1,episode_4,episode_3])
+  end
 end
