@@ -20,6 +20,10 @@ class Episode < ApplicationRecord
   def self.exact_match_search(term)
     where(title: term)
   end
+
+  def self.partial_match_search(term)
+    where("title LIKE ?", "%#{term}%")
+  end
   
   def time_format
     starting_seconds = self.length_in_seconds

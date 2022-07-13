@@ -113,4 +113,25 @@ RSpec.describe 'episode index', type: :feature do
     expect(page).to_not have_content(episode_3.title)
   end
 
+  it 'has search box to find and return episodes with a partial string match to the search term' do
+    podcast_1 = Podcast.create!(name: "This Canadian Death", in_production: true, ad_slot_cost: 950.25)
+
+    episode_1 = podcast_1.episodes.create!(title: "Tim Horton's Donut Distaster", length_in_seconds: 1000, marked_explicit: true)
+    episode_2 = podcast_1.episodes.create!(title: "Tim Pucks - A Public Health Crisis", length_in_seconds: 123, marked_explicit: false)
+    episode_3 = podcast_1.episodes.create!(title: "Lost in Drake's Toronto Mansion", length_in_seconds: 10000, marked_explicit: true)
+
+    visit "/episodes"
+
+    fill_in 'partial_match_search', with: "Tim"
+
+    click_on 'Partial Title Search'
+
+    expect(current_path).to eq("/episodes")
+
+    expect(page).to have_content(episode_1.title)
+    expect(page).to have_content(episode_2.title)
+
+    expect(page).to_not have_content(episode_3.title)
+  end
+
 end
