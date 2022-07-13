@@ -33,6 +33,19 @@ RSpec.describe Episode, type: :model do
     expect(episode_4.time_format).to eq("8 Hours, 20 Minutes")
     expect(episode_5.time_format).to eq("1 Minute")
     expect(episode_6.time_format).to eq("1 Hour")
+  end
 
+  it 'only displays episodes where :marked_explicit is true' do
+    podcast_1 = Podcast.create!(name: "This Canadian Death", in_production: true, ad_slot_cost: 950.25)
+    
+    episode_1 = podcast_1.episodes.create!(title: "Tim Horton's Donut Distaster", length_in_seconds: 5000, marked_explicit: true)
+
+    episode_2 = podcast_1.episodes.create!(title: "Test2", length_in_seconds: 65, marked_explicit: false)
+    
+    episode_3 = podcast_1.episodes.create!(title: "Test3", length_in_seconds: 121, marked_explicit: true)
+
+    episode_4 = podcast_1.episodes.create!(title: "Test4", length_in_seconds: 30000, marked_explicit: true)
+
+    expect(Episode.only_display_explicit).to eq([episode_1,episode_3,episode_4])
   end
 end
