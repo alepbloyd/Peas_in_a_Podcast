@@ -134,4 +134,16 @@ RSpec.describe 'episode index', type: :feature do
     expect(page).to_not have_content(episode_3.title)
   end
 
+  it 'displays length in readable format' do
+    podcast_1 = Podcast.create!(name: "This Canadian Death", in_production: true, ad_slot_cost: 950.25)
+
+    episode_1 = podcast_1.episodes.create!(title: "Tim Horton's Donut Distaster", length_in_seconds: 3661, marked_explicit: true)
+
+    visit '/episodes'
+
+    within '#episode-1' do
+      expect(page).to have_content("1 Hour, 1 Minute, 1 Second")
+    end
+  end
+
 end
