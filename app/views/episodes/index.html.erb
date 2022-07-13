@@ -18,6 +18,18 @@
       <% end %>
     </div>
 
+    <div class="content-option">
+      <%= form_with url: "/episodes?partial_match_search=", method: :get, local: true do |form|%>
+
+        Partial Title Search: <br><%= form.text_field :partial_match_search%>
+
+        <br></br>
+
+        <%= form.submit "Partial Title Search",class: "sort-button"%>
+
+      <% end %>
+    </div>
+
   </div>
 
 </div>

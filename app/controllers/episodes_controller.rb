@@ -2,6 +2,8 @@ class EpisodesController < ApplicationController
   def index
     if params[:exact_match_search] != nil
       @episodes = Episode.exact_match_search(params[:exact_match_search])
+    elsif params[:partial_match_search] != nil
+      @episodes = Episode.partial_match_search(params[:partial_match_search])
     else
       @episodes = Episode.all.only_display_explicit
     end
