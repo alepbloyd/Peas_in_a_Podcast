@@ -4,6 +4,22 @@
     <h1> Episodes Index </h1>
   </div>
 
+  <div class="content-options">
+
+    <div class="content-option">
+      <%= form_with url: "/episodes?exact_match_search=", method: :get, local: true do |form|%>
+
+        Exact Title Search: <br><%= form.text_field :exact_match_search%>
+
+        <br></br>
+
+        <%= form.submit "Exact Title Search",class: "sort-button"%>
+
+      <% end %>
+    </div>
+
+  </div>
+
 </div>
 
 <div id="episode-index-box">

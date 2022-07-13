@@ -1,6 +1,10 @@
 class EpisodesController < ApplicationController
   def index
-    @episodes = Episode.all.only_display_explicit
+    if params[:exact_match_search] != nil
+      @episodes = Episode.exact_match_search(params[:exact_match_search])
+    else
+      @episodes = Episode.all.only_display_explicit
+    end
   end
 
   def show

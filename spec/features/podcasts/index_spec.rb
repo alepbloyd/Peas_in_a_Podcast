@@ -189,8 +189,6 @@ RSpec.describe 'podcast index', type: :feature do
     episode_4 = podcast_2.episodes.create!(title: "Welcome to Our First Episode - Drake test", length_in_seconds: 2000, marked_explicit: true)
     episode_6 = podcast_2.episodes.create!(title: "This Production Schedule is Untenable", length_in_seconds: 20000, marked_explicit: true)
 
-    # require 'pry'; binding.pry 
-
     visit "/podcasts"
 
     fill_in 'exact_match_search', with: "100% Visible"
