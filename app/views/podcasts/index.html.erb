@@ -25,7 +25,7 @@
     <div class="content-option">
       <%= form_with url: "/podcasts?partial_match_search=", method: :get, local: true do |form|%>
 
-        Partial Title Search: <br><%= form.text_field :partial_match_search%>
+        <span class="search-bar-description">Partial Title Search:</span><br><br><%= form.text_field :partial_match_search%>
 
         <br></br>
 
