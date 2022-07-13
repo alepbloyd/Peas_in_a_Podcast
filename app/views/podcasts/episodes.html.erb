@@ -17,7 +17,7 @@
     <div class="content-option">
       <%= form_with url: "/podcasts/#{@podcast.id}/episodes?minimum_length=", method: :get, local: true do |form|%>
 
-        Mininum Length in Seconds: <%= form.number_field :minimum_length%>
+        <span class="search-bar-description">Mininum Length in Seconds:</span><br><br> <%= form.number_field :minimum_length%>
         
         <br></br>
 
