@@ -4,6 +4,8 @@ class PodcastsController < ApplicationController
       @podcasts = Podcast.all.order_by_episode_count
     elsif params[:exact_match_search] != nil
       @podcasts = Podcast.exact_match_search(params[:exact_match_search])
+    elsif params[:partial_match_search] != nil
+      @podcasts = Podcast.partial_match_search(params[:partial_match_search])
     else
       @podcasts = Podcast.all.order_by_recently_created_first
     end

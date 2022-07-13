@@ -25,4 +25,7 @@ class Podcast < ApplicationRecord
     where(name: term)
   end
 
+  def self.partial_match_search(term)
+    where("name LIKE ?", "%#{term}%")
+  end
 end
