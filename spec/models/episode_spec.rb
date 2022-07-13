@@ -33,6 +33,75 @@ RSpec.describe Episode, type: :model do
     expect(episode_4.time_format).to eq("8 Hours, 20 Minutes")
     expect(episode_5.time_format).to eq("1 Minute")
     expect(episode_6.time_format).to eq("1 Hour")
+  end
 
+  it 'only displays episodes where :marked_explicit is true' do
+    podcast_1 = Podcast.create!(name: "This Canadian Death", in_production: true, ad_slot_cost: 950.25)
+    
+    episode_1 = podcast_1.episodes.create!(title: "Tim Horton's Donut Distaster", length_in_seconds: 5000, marked_explicit: true)
+
+    episode_2 = podcast_1.episodes.create!(title: "Test2", length_in_seconds: 65, marked_explicit: false)
+    
+    episode_3 = podcast_1.episodes.create!(title: "Test3", length_in_seconds: 121, marked_explicit: true)
+
+    episode_4 = podcast_1.episodes.create!(title: "Test4", length_in_seconds: 30000, marked_explicit: true)
+
+    expect(Episode.only_display_explicit).to eq([episode_1,episode_3,episode_4])
+  end
+
+  it 'sorts episodes alphabetically' do
+    podcast_1 = Podcast.create!(name: "This Canadian Death", in_production: true, ad_slot_cost: 950.25)
+    
+    episode_1 = podcast_1.episodes.create!(title: "B", length_in_seconds: 5000, marked_explicit: true)
+
+    episode_2 = podcast_1.episodes.create!(title: "A", length_in_seconds: 65, marked_explicit: false)
+    
+    episode_3 = podcast_1.episodes.create!(title: "D", length_in_seconds: 121, marked_explicit: true)
+
+    episode_4 = podcast_1.episodes.create!(title: "C", length_in_seconds: 30000, marked_explicit: true)
+
+    expect(Episode.alphabetical).to eq([episode_2,episode_1,episode_4,episode_3])
+  end
+
+  it 'displays episodes above given length' do
+    podcast_1 = Podcast.create!(name: "This Canadian Death", in_production: true, ad_slot_cost: 950.25)
+
+    episode_1 = podcast_1.episodes.create!(title: "B", length_in_seconds: 10, marked_explicit: true)
+
+    episode_2 = podcast_1.episodes.create!(title: "A", length_in_seconds: 20, marked_explicit: false)
+    
+    episode_3 = podcast_1.episodes.create!(title: "D", length_in_seconds: 30, marked_explicit: true)
+
+    episode_4 = podcast_1.episodes.create!(title: "C", length_in_seconds: 40, marked_explicit: true)
+
+    expect(Episode.above_set_length(25)).to eq([episode_3,episode_4])
+  end
+
+  it 'searches for exact matches based on search term' do
+    podcast_1 = Podcast.create!(name: "This Canadian Death", in_production: true, ad_slot_cost: 950.25)
+
+    episode_1 = podcast_1.episodes.create!(title: "B TEST", length_in_seconds: 10, marked_explicit: true)
+
+    episode_2 = podcast_1.episodes.create!(title: "A TEST", length_in_seconds: 20, marked_explicit: false)
+    
+    episode_3 = podcast_1.episodes.create!(title: "D TEST", length_in_seconds: 30, marked_explicit: true)
+
+    episode_4 = podcast_1.episodes.create!(title: "C TEST", length_in_seconds: 40, marked_explicit: true)
+
+    expect(Episode.exact_match_search("D TEST")).to eq([episode_3])
+  end
+
+  it 'searches for partial matches based on search term' do
+    podcast_1 = Podcast.create!(name: "This Canadian Death", in_production: true, ad_slot_cost: 950.25)
+
+    episode_1 = podcast_1.episodes.create!(title: "B TESTERINO", length_in_seconds: 10, marked_explicit: true)
+
+    episode_2 = podcast_1.episodes.create!(title: "A TEST", length_in_seconds: 20, marked_explicit: false)
+    
+    episode_3 = podcast_1.episodes.create!(title: "D TESTERINO", length_in_seconds: 30, marked_explicit: true)
+
+    episode_4 = podcast_1.episodes.create!(title: "C TEST", length_in_seconds: 40, marked_explicit: true)
+
+    expect(Episode.partial_match_search("STER")).to eq([episode_1,episode_3])
   end
 end
