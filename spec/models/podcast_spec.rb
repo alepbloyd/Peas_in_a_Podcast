@@ -49,4 +49,14 @@ RSpec.describe Podcast, type: :model do
     expect(Podcast.partial_match_search("Life")).to eq([podcast_2,podcast_3])
   end
 
+  it 'orders podcasts by recently created first' do
+    podcast_1 = Podcast.create!(name: "This Canadian Death", in_production: true, ad_slot_cost: 950.25)
+    podcast_2 = Podcast.create!(name: "This Canadian Life", in_production: true, ad_slot_cost: 950.25)
+    podcast_3 = Podcast.create!(name: "This American Life", in_production: true, ad_slot_cost: 950.25)
+
+    podcasts = [podcast_1,podcast_2,podcast_3]
+
+    expect(Podcast.order_by_recently_created_first).to eq([podcast_3,podcast_2,podcast_1])
+  end
+
 end
