@@ -175,4 +175,34 @@ RSpec.describe 'podcast index', type: :feature do
 
   end
 
+  it 'has search box to find and return podcasts by with an exact string match to the search term' do
+    podcast_1 = Podcast.create!(name: "This Canadian Death", in_production: true, ad_slot_cost: 950.25)
+    podcast_2 = Podcast.create!(name: "The Hourly", in_production: true, ad_slot_cost: 500)
+    podcast_3 = Podcast.create!(name: "100% Visible", in_production: true, ad_slot_cost: 875.69)
+    podcast_4 = Podcast.create!(name: "Normal-nomics", in_production: false, ad_slot_cost: 1400)
+    podcast_5 = Podcast.create!(name: "HYPERSPORTS", in_production: false, ad_slot_cost: 999999)
+
+    episode_1 = podcast_1.episodes.create!(title: "Tim Horton's Donut Distaster", length_in_seconds: 1000, marked_explicit: true)
+    episode_2 = podcast_1.episodes.create!(title: "Hockey Pucks - A Public Health Crisis", length_in_seconds: 123, marked_explicit: false)
+    episode_3 = podcast_1.episodes.create!(title: "Lost in Drake's Toronto Mansion", length_in_seconds: 10000, marked_explicit: true)
+
+    episode_4 = podcast_2.episodes.create!(title: "Welcome to Our First Episode - Drake test", length_in_seconds: 2000, marked_explicit: true)
+    episode_6 = podcast_2.episodes.create!(title: "This Production Schedule is Untenable", length_in_seconds: 20000, marked_explicit: true)
+
+    visit "/podcasts"
+
+    fill_in 'exact_search', with: "Drake"
+
+    click_on 'Exact match search'
+
+    expect(current_path).to eq("/podcasts")
+
+    expect(page).to have_content(episode_3.title)
+    expect(page).to have_content(episode_4.title)
+
+    expect(page).to_not have_content(episode_1.title)
+    expect(page).to_not have_content(episode_2.title)
+    expect(page).to_not have_content(episode_6.title)
+  end
+
 end
