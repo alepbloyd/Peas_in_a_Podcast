@@ -21,4 +21,8 @@ class Podcast < ApplicationRecord
     self.updated_at.strftime("%a, %e %b %Y, %H:%M:%S")
   end
 
+  def self.exact_match_search(term)
+    where(name: term)
+  end
+
 end

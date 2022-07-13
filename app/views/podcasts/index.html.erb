@@ -5,13 +5,27 @@
   </div>
 
   <div class="content-options">
+
     <div class="content-option">
       <%= link_to "Create new podcast", "/podcasts/new", class: 'create-button'%>
+    </div>
+
+    <div class="content-option">
+      <%= form_with url: "/podcasts?exact_match_search=", method: :get, local: true do |form|%>
+
+        Exact Title Search: <br><%= form.text_field :exact_match_search%>
+
+        <br></br>
+
+        <%= form.submit "Exact Title Search",class: "sort-button"%>
+
+      <% end %>
     </div>
 
      <div class="content-option">
         <%= link_to "Sort by Number of Episodes", "/podcasts?sort=episode_count",class: "sort-button"%>
       </div>
+      
   </div>
 
     

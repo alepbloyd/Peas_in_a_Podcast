@@ -16,6 +16,10 @@ class Episode < ApplicationRecord
   def self.above_set_length(number)
     where("length_in_seconds > ?", number)
   end
+
+  def self.exact_match_search(term)
+    where(title: term)
+  end
   
   def time_format
     starting_seconds = self.length_in_seconds
