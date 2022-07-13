@@ -29,4 +29,24 @@ RSpec.describe Podcast, type: :model do
     expect(podcast_1.updated_date_format).to eq("Wed, 13 Jul 2022, 17:56:48")
   end
 
+  it 'searches for exact matches based on search term' do
+    podcast_1 = Podcast.create!(name: "This Canadian Death", in_production: true, ad_slot_cost: 950.25)
+    podcast_2 = Podcast.create!(name: "This Canadian Life", in_production: true, ad_slot_cost: 950.25)
+    podcast_3 = Podcast.create!(name: "This American Life", in_production: true, ad_slot_cost: 950.25)
+
+    podcasts = [podcast_1,podcast_2,podcast_3]
+
+    expect(Podcast.exact_match_search("This American Life")).to eq([podcast_3])
+  end
+
+  it 'searches for partial matches based on search term' do
+    podcast_1 = Podcast.create!(name: "This Canadian Death", in_production: true, ad_slot_cost: 950.25)
+    podcast_2 = Podcast.create!(name: "This Canadian Life", in_production: true, ad_slot_cost: 950.25)
+    podcast_3 = Podcast.create!(name: "This American Life", in_production: true, ad_slot_cost: 950.25)
+
+    podcasts = [podcast_1,podcast_2,podcast_3]
+
+    expect(Podcast.partial_match_search("Life")).to eq([podcast_2,podcast_3])
+  end
+
 end
