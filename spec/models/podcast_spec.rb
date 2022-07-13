@@ -59,4 +59,26 @@ RSpec.describe Podcast, type: :model do
     expect(Podcast.order_by_recently_created_first).to eq([podcast_3,podcast_2,podcast_1])
   end
 
+
+  it 'orders podcasts by number of episodes' do
+    podcast_1 = Podcast.create!(name: "This Canadian Death", in_production: true, ad_slot_cost: 950.25)
+
+
+    podcast_2 = Podcast.create!(name: "This Canadian Life", in_production: true, ad_slot_cost: 950.25)
+
+    episode_2_1 = podcast_2.episodes.create!(title: "test", marked_explicit: true, length_in_seconds: 14)
+    episode_2_2 = podcast_2.episodes.create!(title: "test", marked_explicit: true, length_in_seconds: 14)
+    episode_2_3 = podcast_2.episodes.create!(title: "test", marked_explicit: true, length_in_seconds: 14)
+
+
+    podcast_3 = Podcast.create!(name: "This American Life", in_production: true, ad_slot_cost: 950.25)
+
+    episode_3_1 = podcast_3.episodes.create!(title: "test", marked_explicit: true, length_in_seconds: 14)
+    episode_3_2 = podcast_3.episodes.create!(title: "test", marked_explicit: true, length_in_seconds: 14)
+
+    podcasts = [podcast_1,podcast_2,podcast_3]
+
+    expect(Podcast.order_by_episode_count).to eq([podcast_2,podcast_3,podcast_1])
+  end
+
 end
