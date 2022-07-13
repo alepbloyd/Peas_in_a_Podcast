@@ -179,7 +179,7 @@ RSpec.describe 'podcast index', type: :feature do
     podcast_1 = Podcast.create!(name: "This Canadian Death", in_production: true, ad_slot_cost: 950.25)
     podcast_2 = Podcast.create!(name: "The Hourly", in_production: true, ad_slot_cost: 500)
     podcast_3 = Podcast.create!(name: "100% Visible", in_production: true, ad_slot_cost: 875.69)
-    podcast_4 = Podcast.create!(name: "Normal-nomics", in_production: false, ad_slot_cost: 1400)
+    podcast_4 = Podcast.create!(name: "Canadian-nomics", in_production: false, ad_slot_cost: 1400)
     podcast_5 = Podcast.create!(name: "HYPERSPORTS", in_production: false, ad_slot_cost: 999999)
 
     episode_1 = podcast_1.episodes.create!(title: "Tim Horton's Donut Distaster", length_in_seconds: 1000, marked_explicit: true)
@@ -189,20 +189,22 @@ RSpec.describe 'podcast index', type: :feature do
     episode_4 = podcast_2.episodes.create!(title: "Welcome to Our First Episode - Drake test", length_in_seconds: 2000, marked_explicit: true)
     episode_6 = podcast_2.episodes.create!(title: "This Production Schedule is Untenable", length_in_seconds: 20000, marked_explicit: true)
 
+    # require 'pry'; binding.pry 
+
     visit "/podcasts"
 
-    fill_in 'exact_search', with: "Drake"
+    fill_in 'exact_match_search', with: "100% Visible"
 
-    click_on 'Exact match search'
+    click_on 'Exact Title Search'
 
     expect(current_path).to eq("/podcasts")
 
-    expect(page).to have_content(episode_3.title)
-    expect(page).to have_content(episode_4.title)
+    expect(page).to have_content(podcast_3.name)
 
-    expect(page).to_not have_content(episode_1.title)
-    expect(page).to_not have_content(episode_2.title)
-    expect(page).to_not have_content(episode_6.title)
+    expect(page).to_not have_content(podcast_4.name)
+    expect(page).to_not have_content(podcast_2.name)
+    expect(page).to_not have_content(podcast_1.name)
+    expect(page).to_not have_content(podcast_5.name)
   end
 
 end

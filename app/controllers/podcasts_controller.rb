@@ -2,6 +2,8 @@ class PodcastsController < ApplicationController
   def index
     if params[:sort] == "episode_count"
       @podcasts = Podcast.all.order_by_episode_count
+    elsif params[:exact_match_search] != nil
+      @podcasts = Podcast.exact_match_search(params[:exact_match_search])
     else
       @podcasts = Podcast.all.order_by_recently_created_first
     end
