@@ -42,6 +42,10 @@ background-color: #004f04;
 height: 70px
 }
 
+.search-bar-description {
+  color: #E1E2E1;
+}
+
 #banner-link-group {
 flex: 1;
 display: flex;
