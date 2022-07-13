@@ -76,4 +76,18 @@ RSpec.describe Episode, type: :model do
 
     expect(Episode.above_set_length(25)).to eq([episode_3,episode_4])
   end
+
+  it 'searches for exact matches based on search term' do
+    podcast_1 = Podcast.create!(name: "This Canadian Death", in_production: true, ad_slot_cost: 950.25)
+
+    episode_1 = podcast_1.episodes.create!(title: "B TEST", length_in_seconds: 10, marked_explicit: true)
+
+    episode_2 = podcast_1.episodes.create!(title: "A TEST", length_in_seconds: 20, marked_explicit: false)
+    
+    episode_3 = podcast_1.episodes.create!(title: "D TEST", length_in_seconds: 30, marked_explicit: true)
+
+    episode_4 = podcast_1.episodes.create!(title: "C TEST", length_in_seconds: 40, marked_explicit: true)
+
+    expect(Episode.exact_match_search("D TEST")).to eq([episode_3])
+  end
 end
