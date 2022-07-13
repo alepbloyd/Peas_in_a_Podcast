@@ -205,4 +205,27 @@ RSpec.describe 'podcast index', type: :feature do
     expect(page).to_not have_content(podcast_5.name)
   end
 
+  it 'has search box to find and return podcasts by with a partial string match to the search term' do
+    podcast_1 = Podcast.create!(name: "This Canadian Death", in_production: true, ad_slot_cost: 950.25)
+    podcast_2 = Podcast.create!(name: "The Hourly", in_production: true, ad_slot_cost: 500)
+    podcast_3 = Podcast.create!(name: "100% Visible", in_production: true, ad_slot_cost: 875.69)
+    podcast_4 = Podcast.create!(name: "Canadian-nomics", in_production: false, ad_slot_cost: 1400)
+    podcast_5 = Podcast.create!(name: "HYPERSPORTS", in_production: false, ad_slot_cost: 999999)
+
+    visit "/podcasts"
+
+    fill_in 'partial_match_search', with: "Canadian"
+
+    click_on 'Partial Title Search'
+
+    expect(current_path).to eq("/podcasts")
+
+    expect(page).to have_content(podcast_1.name)
+    expect(page).to have_content(podcast_4.name)
+
+    expect(page).to_not have_content(podcast_2.name)
+    expect(page).to_not have_content(podcast_3.name)
+    expect(page).to_not have_content(podcast_5.name)
+  end
+
 end
