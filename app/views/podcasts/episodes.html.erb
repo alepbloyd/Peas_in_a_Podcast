@@ -36,7 +36,7 @@
   <div id="episode-<%=index+1%>">
     <h2><%= episode.title%> </h2>
 
-    <p><%= episode.time_format%></p>
+    <p><%= episode.time_format%> - (<%= episode.length_in_seconds%> seconds)</p>
 
     <p>Explicit: <%= episode.marked_explicit%></p>
 

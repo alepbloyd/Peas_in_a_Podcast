@@ -12,7 +12,7 @@
   <body>
     <div id="page-banner">
       <div id="page-logo">
-        <%= image_tag("peapod_logo.png",size:"65x65", :alt => "peapod logo")%>
+        <%= link_to image_tag("peapod_logo.png",size:"65x65", :alt => "peapod logo"), "/podcasts"%>
       </div>
       <div id="page-title-container">
         <%= link_to "Peas In a Podcast", "/podcasts",class: "page-title-link"%>
